@@ -28,32 +28,32 @@ const Team = () => {
         className="mySwiper p-10 m-10"
       >
         <SwiperSlide>
-            <img src={img1} alt="" />
+            <img src={img1} alt="" className="rounded-sm"/>
             <h2>Car Engine Plug</h2>
             <p>Engine Expert</p>
         </SwiperSlide>
         <SwiperSlide>
-            <img src={img2} alt="" />
+            <img src={img2} alt=""  className="rounded-sm"/>
             <h2>Car Engine Plug</h2>
             <p>Engine Expert</p>
         </SwiperSlide>
         <SwiperSlide>
-            <img src={img3} alt="" />
+            <img src={img3} alt="" className="rounded-sm" />
             <h2>Car Engine Plug</h2>
             <p>Engine Expert</p>
         </SwiperSlide>
         <SwiperSlide>
-            <img src={img1} alt="" />
+            <img src={img1} alt="" className="rounded"/>
             <h2>Car Engine Plug</h2>
             <p>Engine Expert</p>
         </SwiperSlide>
         <SwiperSlide>
-            <img src={img2} alt="" />
+            <img src={img2} alt="" className="rounded"/>
             <h2>Car Engine Plug</h2>
             <p>Engine Expert</p>
         </SwiperSlide>
         <SwiperSlide>
-            <img src={img3} alt="" />
+            <img src={img3} alt="" className="rounded"/>
             <h2>Car Engine Plug</h2>
             <p>Engine Expert</p>
         </SwiperSlide>
