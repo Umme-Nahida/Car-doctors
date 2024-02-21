@@ -8,12 +8,12 @@ import router from './Routes/Router.jsx';
 import AuthProvider from './Authentication/Provider/AuthProvider.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <div className='max-w-screen-xl mx-auto'>
+  <div>
     <React.StrictMode>
       <AuthProvider>
         <RouterProvider router={router} />
       </AuthProvider>
-    </React.StrictMode>,
+    </React.StrictMode>
 
   </div>
 )

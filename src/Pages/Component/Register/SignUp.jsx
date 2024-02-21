@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import img from '../../../../public/image/login/login.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../../../Authentication/Provider/AuthProvider';
 import toast, { Toaster } from 'react-hot-toast';
 const SignUp = () => {
      const {createUser} = useContext(AuthContext)
+     const navigate = useNavigate();
+
     const handleSignUp = e =>{
         e.preventDefault()
         const form = e.target;
@@ -15,9 +17,14 @@ const SignUp = () => {
         createUser(email,password)
         .then(result => {
             console.log(result.user)
-            toast('you have Sign Up successfully')
+            e.target.reset();
+            navigate('/')
+            toast.success('you have Sign Up successfully')
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            toast.error('Please provide a valid information')
+        })
 
 
     }

@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../../public/image/login/login.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../../Authentication/Provider/AuthProvider';
-import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
     const {signIn} = useContext(AuthContext)
@@ -19,9 +19,14 @@ const Login = () => {
         .then(result =>{
              const loggedIn = (result.user)
              console.log(loggedIn)
-        
+             e.target.reset()
+             toast.success("you have login successfully")
+             navigate('/')
         })
-        .catch(error =>console.log(error))
+        .catch(error =>{
+            console.log(error)
+            toast.error("Invalid Email & Password!")
+        })
     }
 
     return (
@@ -53,7 +58,7 @@ const Login = () => {
                                 <button className="btn btn-primary"><input type="submit" value="login" /></button>
                             </div>
                             <p>You have a no account please <Link to="/signUp">Sign Up</Link></p>
-
+                             <Toaster></Toaster>
                         </form>
                     </div>
                 </div>

@@ -8,7 +8,7 @@ const Headers = () => {
     const handleSignOut=()=>{
         logOut()
         .then(result=> {
-            console.log(result.user)
+            console.log(result?.user)
         })
         .catch(error => console.log(error))
     }
@@ -28,7 +28,7 @@ const Headers = () => {
           }
     </>
     return (
-        <div className="navbar  bg-base-100 h-6 py-12">
+        <div className="navbar bg-base-100 h-6 py-14 px-10 shadow-lg">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -38,7 +38,7 @@ const Headers = () => {
                         {navMenu}
                     </ul>
                 </div>
-                <img src={logo} alt="" />
+                <img src={logo} alt=""  className='hidden lg:block'/>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -46,7 +46,7 @@ const Headers = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn btn-outline btn-warning">Appointment</a>
+                <a className="btn sm:btn-sm md:btn-md lg:btn-md border border-[#FF3811] text-[#FF3811] bg-inherit hover:bg-[#FF3811] hover:text-white">Appointment</a>
             </div>
         </div>
     );
