@@ -5,7 +5,7 @@ const BookingRow = ({booking,handleUpdate}) => {
     const {customerName,img,price,date,service,email,_id,status} = booking;
 
     return (
-         < tr >
+         < tr>
             <th>
                 <label>
                     <input type="checkbox" className="checkbox" />

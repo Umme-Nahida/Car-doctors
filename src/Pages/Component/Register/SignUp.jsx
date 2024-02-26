@@ -31,11 +31,11 @@ const SignUp = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col lg:flex-row">
-                <div className="text-center lg:text-left w-1/2 mr-10">
+            <div className="hero-content flex-row p-10 space-x-10">
+                <div className="lg:text-left w-1/2 mr-10 hidden md:block lg:block">
                     <img src={img} alt="" className='' />
                 </div>
-                <div className="card flex-shrink-0 w-1/2 max-w-sm shadow-2xl bg-base-100 border-2 border-slate-400">
+                <div className="card flex-shrink-0 w-full md:w-1/2 lg:w-1/2  shadow-2xl bg-base-100 border-2 border-slate-400">
                     <div className="card-body p-5">
                         <h1 className="text-3xl font-bold">SignUp now!</h1>
                         <form onSubmit={handleSignUp}>

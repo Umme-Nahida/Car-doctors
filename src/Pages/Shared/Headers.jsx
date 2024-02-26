@@ -16,7 +16,6 @@ const Headers = () => {
            <li><Link to="/"><a>Home</a></Link></li>
            <li><Link to="/about"><a>About</a></Link></li>
            <li><Link to="/services"><a>Services</a></Link></li>
-           <li><Link to="/blog"><a>Blog</a></Link></li>
            <li><Link to="/contact"><a>Contact</a></Link></li>
           {
             user?.email ?
