@@ -52,10 +52,10 @@ const Bookings = () => {
       </div>
       {/* booking table */}
       {booking.length > 0 ? (
-        <div className="overflow-x-auto max-w-screen-xl mx-auto py-10">
+        <div className="overflow-x-auto max-w-screen-xl mx-auto py-10 shadow-xl border m-0 md:m-10 lg:m-20">
           <table className="table ">
             {/* head */}
-            <thead className="">
+            <thead className=" ">
               <tr>
                 <th>
                   <label>
@@ -63,9 +63,9 @@ const Bookings = () => {
                   </label>
                 </th>
                 <th>Image</th>
-                <th>Service</th>
-                <th>Price</th>
-                <th>Date</th>
+                <th className="hidden lg:block">Service</th>
+                <th className="">Price</th>
+                <th className="hidden md:block lg:block">Date</th>
                 <th>Status</th>
               </tr>
             </thead>
