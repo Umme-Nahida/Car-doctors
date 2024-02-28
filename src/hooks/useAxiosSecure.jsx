@@ -4,8 +4,9 @@ import { AuthContext } from "../Authentication/Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-    baseURL: `http://localhost:5000`,
-    withCredentials: true
+    baseURL: `https://car-doctors-chi.vercel.app`,
+    withCredentials: true,
+    crossDomain:true
 
 })
 const useAxiosSecure = () => {

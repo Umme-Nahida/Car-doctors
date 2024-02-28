@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Authentication/Provider/AuthProvider";
 import BookingRow from "./BookingRow";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import img from '../../../../public/image/services/1.jpg'
 
 const Bookings = () => {
   const { user } = useContext(AuthContext);
@@ -20,7 +21,7 @@ const Bookings = () => {
 
   // update booking using api
   const handleUpdate = (id) => {
-    fetch(`http://localhost:5000/bookings/${id}`, {
+    fetch(`https://car-doctors-chi.vercel.app/bookings/${id}`, {
       method: "patch",
       headers: {
         "content-type": "application/json",
@@ -43,7 +44,7 @@ const Bookings = () => {
   return (
     <div>
       <div>
-        <div className="bg-[url('../../../../public/image/checkout/checkout.png')] bg-cover w-auto h-[150px] md:h-[150px] lg:h-[250px] mb-0 ">
+        <div className="bg-[url('https://i.ibb.co/sJwVFGP/checkout.png')] bg-cover w-auto h-[150px] md:h-[150px] lg:h-[250px] mb-0 ">
           <div className=" py-20 md:py-10 lg:py-24 pl-5 md:pl-5 lg:pl-10 space-y-2">
           <h1 className="text-2xl md:text-3xl lg:text-5xl text-white font-bold">Manage All Orders</h1>
           <p className="text-[#FF3811]">Home - Manage All Orders</p>
