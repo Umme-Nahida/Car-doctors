@@ -21,7 +21,7 @@ const Bookings = () => {
 
   // update booking using api
   const handleUpdate = (id) => {
-    fetch(`https://car-doctors-chi.vercel.app/bookings/${id}`, {
+    fetch(`http://localhost:5000/bookings/${id}`, {
       method: "patch",
       headers: {
         "content-type": "application/json",
