@@ -21,14 +21,14 @@ const Bookings = () => {
 
   // update booking using api
   const handleUpdate = (id) => {
-    // fetch(`http://localhost:5000/bookings/${id}`, {
+    // fetch(`https://car-doctors-server-ten.vercel.app/bookings/${id}`, {
     //   method: "patch",
     //   headers: {
     //     "content-type": "application/json",
     //   },
     //   body: JSON.stringify({ status: "confirm" }),
     // })
-      axiosSecure.patch(`http://localhost:5000/bookings/${id}`,{status:"confirm"})
+      axiosSecure.patch(`https://car-doctors-server-ten.vercel.app/bookings/${id}`,{status:"confirm"})
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {

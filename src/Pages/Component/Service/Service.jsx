@@ -10,7 +10,7 @@ const Service = () => {
     console.log(services.length,services)
 
     useEffect(()=>{
-        axiosSecure('http://localhost:5000/services')
+        axiosSecure('https://car-doctors-server-ten.vercel.app/services')
         .then(res => setServices(res.data))
     },[axiosSecure])
 

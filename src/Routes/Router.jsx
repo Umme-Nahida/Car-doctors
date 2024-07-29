@@ -54,7 +54,7 @@ const router = createBrowserRouter([
         {
             path:'/cheackOut/:id',
             element:<PrivateRoute><CheackOut></CheackOut></PrivateRoute>,
-            loader:({params}) => fetch(`http://localhost:5000/service/${params.id}`)
+            loader:({params}) => fetch(`https://car-doctors-server-ten.vercel.app/service/${params.id}`)
 
         }
       ]

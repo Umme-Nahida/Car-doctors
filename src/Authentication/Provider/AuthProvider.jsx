@@ -43,12 +43,12 @@ const AuthProvider = ({children}) => {
             setLoading(false)
             console.log(currentUser)
             if(currentUser){
-                axios.post('http://localhost:5000/jwt', loggerUser,{withCredentials:true})
+                axios.post('https://car-doctors-server-ten.vercel.app/jwt', loggerUser,{withCredentials:true})
                 .then(res=>{
                     console.log(res.data)
                 })
             }else{
-                axios.post('http://localhost:5000/logOut',loggerUser,{withCredentials:true})
+                axios.post('https://car-doctors-server-ten.vercel.app/logOut',loggerUser,{withCredentials:true})
                 .then(res=>{
                     console.log(res.data)
                 })

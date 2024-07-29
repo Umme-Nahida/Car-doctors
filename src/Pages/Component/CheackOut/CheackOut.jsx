@@ -27,7 +27,7 @@ const CheackOut = () => {
       price: price,
     };
 
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://car-doctors-server-ten.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",
