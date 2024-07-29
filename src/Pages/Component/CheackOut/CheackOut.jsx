@@ -46,7 +46,8 @@ const CheackOut = () => {
   return (
     <div className="">
       <div>
-        <div className="bg-[url('https://i.ibb.co/sJwVFGP/checkout.png')] bg-cover w-auto h-[150px] md:h-[150px] lg:h-[250px] mb-0 ">
+        <div
+         className="bg-[url('https://i.ibb.co/sJwVFGP/checkout.png')] bg-cover w-auto h-[150px] md:h-[150px] lg:h-[250px] mb-0 ">
           <h3 className="text-2xl md:text-3xl lg:text-5xl text-white font-bold py-20 md:py-10 lg:py-24 pl-5 md:pl-5 lg:pl-10">
             Check Out
           </h3>

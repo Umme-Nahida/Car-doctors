@@ -21,17 +21,17 @@ const Bookings = () => {
 
   // update booking using api
   const handleUpdate = (id) => {
-    fetch(`http://localhost:5000/bookings/${id}`, {
-      method: "patch",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ status: "confirm" }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
+    // fetch(`http://localhost:5000/bookings/${id}`, {
+    //   method: "patch",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify({ status: "confirm" }),
+    // })
+      axiosSecure.patch(`http://localhost:5000/bookings/${id}`,{status:"confirm"})
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
           const reamining = booking.filter((book) => book._id !== id);
           const updateId = booking.find((book) => book._id === id);
           updateId.status = "confirm";
@@ -83,7 +83,7 @@ const Bookings = () => {
         </div>
       ) : (
         <div className=" min-h-screen flex justify-center items-center">
-          <h1>you don't have a any booking</h1>
+          <h1>you do not have a any booking</h1>
         </div>
       )}
     </div>

@@ -52,13 +52,14 @@ const AuthProvider = ({children}) => {
                 .then(res=>{
                     console.log(res.data)
                 })
+                logOut()
             }
         })
         
         return ()=>{
             return unsubscrive() 
         }
-    },[])
+    },[user?.email])
 
     return (
         <AuthContext.Provider value={authInfo}>

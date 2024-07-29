@@ -5,7 +5,7 @@ const BookingRow = ({booking,handleUpdate}) => {
     const {customerName,img,price,date,service,email,_id,status} = booking;
 
     return (
-         < tr>
+         < tr className=" w-full">
             <th>
                 <label>
                     <input type="checkbox" className="checkbox" />
@@ -13,7 +13,7 @@ const BookingRow = ({booking,handleUpdate}) => {
             </th>
             <td className="max-w-max">
                     <div className="avatar">
-                        <div className="w-24 rounded h-24">
+                        <div className="w-12 rounded h-12">
                             <img src={img} alt="Avatar Tailwind CSS Component" />
                         </div>
                     </div>
@@ -23,13 +23,13 @@ const BookingRow = ({booking,handleUpdate}) => {
             <td className=" hidden lg:block truncate">
                 {service}
             </td>
-            <td className="py-0">{price}</td>
-            <td className=" hidden md:block lg:block">{date}</td>
+            <td className="">{price}</td>
+            <td className=" hidden md:block lg:block md:pt-8">{date}</td>
             <th>
                 {
                     status === 'confirm' ?
                     <span className="bolt">confirm</span> :
-                    <button onClick={()=>handleUpdate(_id)} className="btn btn-ghost btn-xs">please confirm</button>
+                    <button onClick={()=>handleUpdate(_id)} className="btn btn-ghost btn-sm">please confirm</button>
                 }
             </th>
         </tr >
