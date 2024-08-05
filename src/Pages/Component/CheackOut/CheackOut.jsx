@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Authentication/Provider/AuthProvider";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 // import checkoutimg from '../../../../public/image/checkout/checkout.png'
 
 const CheackOut = () => {
+  const axiosSecure = useAxiosSecure()
   const singleServiceData = useLoaderData();
   const { user } = useContext(AuthContext);
   console.log(user);
@@ -27,21 +30,28 @@ const CheackOut = () => {
       price: price,
     };
 
-    fetch("https://car-doctors-server-ten.vercel.app/bookings", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(order),
+    axiosSecure.post("https://car-doctors-server-ten.vercel.app/bookings",order)
+    .then(res=>{
+      if (res.data.insertedId){
+             toast.success("you have succefully booking")
+            }
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
-          alert("you have successfully booking");
-        }
-      });
-    console.log(order);
+
+    // fetch("https://car-doctors-server-ten.vercel.app/bookings", {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(order),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     if (data.insertedId) {
+    //       alert("you have successfully booking");
+    //     }
+    //   });
+    
   };
   return (
     <div className="">
