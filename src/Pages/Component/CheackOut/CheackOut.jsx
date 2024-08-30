@@ -30,27 +30,13 @@ const CheackOut = () => {
       price: price,
     };
 
-    axiosSecure.post("https://car-doctors-server-ten.vercel.app/bookings",order)
+    axiosSecure.post("/bookings",order)
     .then(res=>{
       if (res.data.insertedId){
              toast.success("you have succefully booking")
             }
     })
 
-    // fetch("https://car-doctors-server-ten.vercel.app/bookings", {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(order),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     if (data.insertedId) {
-    //       alert("you have successfully booking");
-    //     }
-    //   });
     
   };
   return (

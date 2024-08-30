@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Authentication/Provider/AuthProvider";
 import BookingRow from "./BookingRow";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import img from '../../../../public/image/services/1.jpg'
 
 const Bookings = () => {
   const { user } = useContext(AuthContext);
@@ -21,14 +20,8 @@ const Bookings = () => {
 
   // update booking using api
   const handleUpdate = (id) => {
-    // fetch(`https://car-doctors-server-ten.vercel.app/bookings/${id}`, {
-    //   method: "patch",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify({ status: "confirm" }),
-    // })
-      axiosSecure.patch(`https://car-doctors-server-ten.vercel.app/bookings/${id}`,{status:"confirm"})
+   
+      axiosSecure.patch(`/bookings/${id}`,{status:"confirm"})
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {

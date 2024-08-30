@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import app from "../firebase.confic";
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 // import axios from "axios";
 
 export const AuthContext = createContext();
@@ -10,7 +11,8 @@ const auth = getAuth(app)
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({children}) => {
     const [user,setUser] = useState(null)
-    const [loading,setLoading] =useState(true)
+    const [loading,setLoading] =useState("")
+    const axiosSecure=useAxiosSecure()
 
 
     const signIn = (email,password)=>{
@@ -43,12 +45,12 @@ const AuthProvider = ({children}) => {
             setLoading(false)
             console.log(currentUser)
             if(currentUser){
-                axios.post('https://car-doctors-server-ten.vercel.app/jwt', loggerUser,{withCredentials:true})
+                axiosSecure.post('/jwt', loggerUser,)
                 .then(res=>{
                     console.log(res.data)
                 })
             }else{
-                axios.post('https://car-doctors-server-ten.vercel.app/logOut',loggerUser,{withCredentials:true})
+                axiosSecure.post('/logOut',loggerUser,)
                 .then(res=>{
                     console.log(res.data)
                 })
