@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../../public/image/logo.svg';
 import { useContext } from 'react';
 import { AuthContext } from '../../Authentication/Provider/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Headers = () => {
     const {user,logOut} = useContext(AuthContext)
@@ -9,6 +10,7 @@ const Headers = () => {
         logOut()
         .then(result=> {
             console.log(result?.user)
+            toast.success('user Log Out successfully')
         })
         .catch(error => console.log(error))
     }
