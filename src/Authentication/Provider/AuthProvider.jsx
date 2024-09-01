@@ -1,19 +1,19 @@
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase.confic";
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import axios from "axios";
+
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 // import axios from "axios";
 
 export const AuthContext = createContext();
 const auth = getAuth(app)
 
+
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({children}) => {
     const [user,setUser] = useState(null)
-    const [loading,setLoading] =useState("")
-    const axiosSecure=useAxiosSecure()
-
+    const [loading,setLoading] =useState(true)
+    const axiosSecure= useAxiosSecure();
 
     const signIn = (email,password)=>{
         setLoading(true)
@@ -29,6 +29,9 @@ const AuthProvider = ({children}) => {
         return signOut(auth)
     }
 
+    // const redirectToLogin = () => {
+    //     navigate('/login');
+    //   };
     const authInfo = {
         user,
         createUser,
@@ -36,14 +39,14 @@ const AuthProvider = ({children}) => {
         loading,
         logOut
     }
-    
+  
     useEffect(()=>{
        const unsubscrive= onAuthStateChanged(auth,currentUser=>{
           const userEmail  = currentUser?.email || user?.email;
           const loggerUser = {email: userEmail}
             setUser(currentUser)
             setLoading(false)
-            console.log(currentUser)
+            console.log(currentUser) 
             if(currentUser){
                 axiosSecure.post('/jwt', loggerUser,)
                 .then(res=>{
@@ -54,7 +57,7 @@ const AuthProvider = ({children}) => {
                 .then(res=>{
                     console.log(res.data)
                 })
-                logOut()
+                
             }
         })
         
@@ -62,6 +65,9 @@ const AuthProvider = ({children}) => {
             return unsubscrive() 
         }
     },[user?.email])
+
+   
+    
 
     return (
         <AuthContext.Provider value={authInfo}>
