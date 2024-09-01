@@ -1,34 +1,38 @@
-import axios from "axios";
-import { useContext, useEffect } from "react";
-import { AuthContext } from "../Authentication/Provider/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect } from 'react';
+import axios from 'axios';
+import { AuthContext } from '../Authentication/Provider/AuthProvider';
+
 
 const axiosSecure = axios.create({
-    baseURL: `https://car-doctors-server-ten.vercel.app`,
-    withCredentials: true,
-    crossDomain:true
+    baseURL: 'http://localhost:8000',
+    withCredentials: true, // Ensure cookies are sent with the request
+  });
 
-})
+
 const useAxiosSecure = () => {
-    const { logOut } = useContext(AuthContext)
-    const navigate = useNavigate();
-    useEffect(() => {
-        axiosSecure.interceptors.response.use(res => {
-            return res;
-        }), error => {
-            console.log('catch the error', error.response)
-            if (error.response.status === 401 || error.response.status === 403) {
-                console.log('logOut the user')
-                logOut()
-                    .then(result => {
-                        console.log(result.user)
-                        navigate('/login')
-                    })
-                    .catch(error => console.log(error))
-            }
+ const userData = useContext(AuthContext)
+ 
+
+  useEffect(() => {
+    const responseInterceptor = axiosSecure.interceptors.response.use(
+      response => response,
+      async (error) => {
+
+        if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+          console.log('Unauthorized or Forbidden - logging out user');
+          await userData?.logOut() // Call the logout function
         }
-    }, [logOut, navigate])
-    return axiosSecure
+        return Promise.reject(error);
+      }
+    );
+
+    // Clean up the interceptor on unmount
+    return () => {
+      axiosSecure.interceptors.response.eject(responseInterceptor);
+    };
+  }, [axiosSecure]);
+
+  return axiosSecure;
 };
 
 export default useAxiosSecure;
