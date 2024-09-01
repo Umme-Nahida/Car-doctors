@@ -4,8 +4,10 @@ import img3 from '../../../../public/image/banner/3.jpg'
 import img4 from '../../../../public/image/banner/4.jpg'
 import img5 from '../../../../public/image/banner/5.jpg'
 import img6 from '../../../../public/image/banner/6.jpg'
+import useRedirect from '../../../hooks/useRedirect'
 
 const Banner = () => {
+    const loginPage = useRedirect()
     return (
         <div className="carousel bg-black relative">
             <div id="slide1" className="carousel-item w-full lg:h-[600px] md:h-[400px] bg-red-500">
@@ -16,7 +18,7 @@ const Banner = () => {
                         <p>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
                         <div>
                             <button className='btn bg-[#FF3811] text-white border-[#FF3811] hover:bg-inherit hover:text-white hover:border-white mr-4'>Discover More</button>
-                            <button className='btn sm:btn-sm md:btn-md lg:btn-md border border-white text-white bg-inherit hover:bg-[#FF3811] hover:text-white'>Latest Project</button>
+                            <button onClick={()=>loginPage()} className='btn sm:btn-sm md:btn-md lg:btn-md border border-white text-white bg-inherit hover:bg-[#FF3811] hover:text-white'>Latest Project</button>
                         </div>
                     </div>
                 </div>
