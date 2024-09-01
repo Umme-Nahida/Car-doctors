@@ -4,34 +4,35 @@ import BookingRow from "./BookingRow";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Bookings = () => {
-  const { user } = useContext(AuthContext);
+  const { user,loading } = useContext(AuthContext);
   const [booking, setBooking] = useState([]);
   console.log(booking);
   const axiosSecure = useAxiosSecure();
+  console.log(loading,"bookings")
 
-  const url = `/bookings?email=${user?.email}`;
+  const url = `/bookings?email=mysuccessmission@gmail.com`;
   useEffect(() => {
-    //  axios.get(url,{withCredentials:true})
-    //  .then(res => setBooking(res.data))
     axiosSecure.get(url).then((res) => {
+      
       setBooking(res.data);
+      
     });
   }, [url, axiosSecure]);
 
   // update booking using api
   const handleUpdate = (id) => {
    
-      axiosSecure.patch(`/bookings/${id}`,{status:"confirm"})
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.modifiedCount > 0) {
-          const reamining = booking.filter((book) => book._id !== id);
-          const updateId = booking.find((book) => book._id === id);
-          updateId.status = "confirm";
-          const newUpdateBooking = [updateId, ...reamining];
-          setBooking(newUpdateBooking);
-        }
-      });
+    axiosSecure.patch(`/bookings/${id}`,{status:"confirm"})
+    .then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        const reamining = booking.filter((book) => book._id !== id);
+        const updateId = booking.find((book) => book._id === id);
+        updateId.status = "confirm";
+        const newUpdateBooking = [updateId, ...reamining];
+        setBooking(newUpdateBooking);
+      }
+    });
   };
 
   return (

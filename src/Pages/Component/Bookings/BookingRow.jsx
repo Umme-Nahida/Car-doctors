@@ -1,7 +1,7 @@
 
 
 const BookingRow = ({booking,handleUpdate}) => {
-    console.log(booking)
+    // console.log(booking)
     const {customerName,img,price,date,service,email,_id,status} = booking;
 
     return (
